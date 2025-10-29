@@ -5,8 +5,6 @@
 % 
 % Author: Yao Xiao 
 % Date: Sept 01, 2024 
-% Edited: Shad Hassan 
-% Date: Oct 10, 2025
 %
 
 clear; close all; clc; % clean up
@@ -17,7 +15,7 @@ clear; close all; clc; % clean up
 
 % Free parameters of the problem 
 n = 128; % number of (equidistant) data points on [0,1] 
-SNR = 5; % SNR used to compute variance of the iid Gaussian noise added to the measurements
+SNR = 15; % SNR used to compute variance of the iid Gaussian noise added to the measurements
 % gamma = 1e-2
 J = 1; % number of (different) signals
 rng('default'); rng(1 ,'twister'); % to make the results reproducable
@@ -96,9 +94,9 @@ p = 0;
 
 
 T = LocalDetector(n,p);
-S = LocalDetector(n,3);
-% S = getConMatrix('loc',n,p,1/4);
-S_1 = getConMatrix('loc',n,3,1/4);
+% S = LocalDetector(n,3);
+S = getConMatrix('loc',n,p);
+% S_1 = getConMatrix('loc',n,3,1/4);
 
 Res = (T-S);
 
